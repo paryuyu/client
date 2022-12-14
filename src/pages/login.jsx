@@ -1,14 +1,39 @@
 import { Avatar, Button, Checkbox, FormControlLabel, TextField, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import LockIcon from '@mui/icons-material/Lock';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { LoginAPI } from "../util/account";
+import { AccountContext } from "../context/account-context";
+
 function LoginPage() {
-
-
-    const handleSubmit = () => {
-
+    const [userId, setUserId] = useState();
+    const [password, setPassword] = useState();
+    let navi = useNavigate()
+    let accountCtx = useContext(AccountContext);
+    const handleChangeId = (evt) => {
+        setUserId(evt.target.value)
     }
 
+    const handleChangePassword = (evt) =>{
+        setPassword(evt.target.value)
+    }
+
+    const LoginClick = async ()=>{
+        if(userId.length>0 && password.length>0){
+            let data={
+                userId: userId,
+                userPassword: password
+            }
+            let response = await LoginAPI(data);
+           // console.log(response)
+            if(response.result){
+                accountCtx.setToken(response.token)
+                localStorage.setItem("jwt",response.token)
+                navi("/channels/@me")
+            }
+        }
+    }
 
     return (
         <Container component="main" maxWidth="xs">
@@ -33,20 +58,22 @@ function LoginPage() {
                 <Typography color='white'>
                     다시 만나다니 너무 반가워요!
                 </Typography>
-                <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-                    <Typography sx={{ color: 'white', fontSize: 13, mt: 2 }}>이메일*</Typography>
+
+                <Box noValidate sx={{ mt: 1 }}>
+                    <Typography sx={{ color: 'white', fontSize: 13, mt: 2 }}>아이디*</Typography>
+
                     <TextField
+                        onChange={handleChangeId}
                         required
                         fullWidth
                         InputProps={{ sx: { bgcolor: 'black', color: 'white' } }}
-                        name="email"
-                        autoComplete="email"
                         autoFocus
                     />
                     <Box>
+
                         <Typography sx={{ color: 'white', fontSize: 13, mt: 2 }}>비밀번호*</Typography>
                         <TextField
-
+                            onChange={handleChangePassword}
                             required
                             fullWidth
                             type="password"
@@ -60,6 +87,7 @@ function LoginPage() {
                         fullWidth
                         variant="contained"
                         sx={[{ mt: 3, mb: 2, background: '#6b5892', color: 'white' }, { '&:hover': { background: '#6b5895' } }]}
+                        onClick={LoginClick}
                     >
                         로그인
                     </Button>
