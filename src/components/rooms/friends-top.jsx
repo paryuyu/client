@@ -4,8 +4,10 @@ import { Typography } from '@mui/material';
 
 
 export default function FriendsTop() {
+
+
     return ( <>
-     <Box sx={{ width: '88vw', bgcolor: '#606363', padding: 2, display: 'flex', justifyContent: 'start' }}>
+     <Box sx={{ bgcolor: '#606363', padding: 2, width:'1510px',display: 'flex', justifyContent: 'start' }}>
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         <FaUserFriends style={{ color: '#ddd', fontSize: 20 }} />
         <Typography sx={{ marginRight: 3, marginLeft: 1, color: 'white', fontWeight: 'bold' }}>친구</Typography>

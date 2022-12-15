@@ -28,7 +28,7 @@ export default function Layout() {
     
   
     <Box sx={{display:'flex'}}>
-        <List sx={{ width: '100%', maxWidth: 80, bgcolor: '#232424', height: '100.9vh' , display:'flex', flexDirection:'column', alignItems:'center' }}>
+        <List sx={{ width: '100%', maxWidth: 80, bgcolor: '#232424', height: '100vh' , display:'flex', flexDirection:'column', alignItems:'center' }}>
             <ListItem
                 onMouseOver={() => { setMeIcon(true) }}
                 onMouseLeave={() => {setMeIcon(false) }}

@@ -7,10 +7,10 @@ export default function FriendsMain() {
     
     
     
+        
     
-    
-    
-    return ( <Box sx={{bgcolor:'#606363', height:'95.7vh'}}>
+
+    return ( <Box sx={{bgcolor:'#606363', height:'94.6vh'}}>
         <Divider/>
         {/** 친구가 없을 때 */}
         <NoFriends/>

@@ -3,12 +3,12 @@ import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import { FaUserFriends } from 'react-icons/fa';
 import AddIcon from '@mui/icons-material/Add';
-import { Divider, Typography } from '@mui/material';
+import { Box, Divider, Typography } from '@mui/material';
 
 
 
 function Friends() {
-    return (<> <List sx={{ width: '100%', height: '100vh', maxWidth: 350, bgcolor: '#535454', padding: 1.5 }}>
+    return (<> <List sx={{ width: '100%',  maxWidth: 350, bgcolor: '#535454', padding: 1.5 }}>
         <ListItem sx={[{ bgcolor: '#333', cursor: 'pointer', borderRadius: 5 }, { "&:hover": { bgcolor: '#575958' } }]}>
             <ListItemAvatar>
                 <FaUserFriends size={30} color={'white'} />

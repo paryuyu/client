@@ -5,8 +5,8 @@ import { Typography } from '@mui/material';
 import FriendsTop from '../rooms/friends-top';
 import FriendsMain from '../rooms/friends-main';
 export default function FriendsRight() {
-  return (<>
+  return (<Box>
    <FriendsTop/>
    <FriendsMain/>
-  </>);
+  </Box>);
 };
