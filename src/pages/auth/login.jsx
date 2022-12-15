@@ -1,16 +1,20 @@
-import { Avatar, Button, Checkbox, FormControlLabel, TextField, Typography } from "@mui/material";
+import { Avatar, Button, TextField, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import LockIcon from '@mui/icons-material/Lock';
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
-import { LoginAPI } from "../util/account";
-import { AccountContext } from "../context/account-context";
+import { AccountContext } from "../../context/account-context";
+import { LoginAPI } from "../../util/account";
+
 
 function LoginPage() {
     const [userId, setUserId] = useState();
     const [password, setPassword] = useState();
+
     let navi = useNavigate()
+    
     let accountCtx = useContext(AccountContext);
+    
     const handleChangeId = (evt) => {
         setUserId(evt.target.value)
     }

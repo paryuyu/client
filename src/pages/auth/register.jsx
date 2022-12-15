@@ -3,12 +3,13 @@ import { Box, Container } from "@mui/system";
 import LockIcon from '@mui/icons-material/Lock';
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { RegisterAPI } from "../util/account";
+import { RegisterAPI } from "../../util/account";
 import { useNavigate } from "react-router-dom";
 export default function RegisterPage() {
     const [userId, setUserId] = useState("");
     const [password,setPassword] = useState("");
     const [userName,setUserName] = useState("");
+
 let navi = useNavigate();
     const handleIdChange = (evt) => {
         setUserId(evt.target.value)

@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom";
-import LoginPage from './pages/login'
-import HomePage from "./pages/home";
-import RegisterPage from "./pages/register";
 import { AccountContextProvider } from "./context/account-context";
-import MePage from "./components/me_page";
-import Layout from "./components/layout";
-import ChannelsTemplete from "./components/channels";
+import HomePage from './pages/auth/home';
+import LoginPage from './pages/auth/login';
+import RegisterPage from './pages/auth/register';
+import Layout from "./pages/channels/layout";
+import Mepage from "./pages/channels/mePage";
+import ChannelsTemplete from './pages/channels/channels'
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />} />
         <Route element={<Layout />}>
-          <Route path='/channels/@me' element={<MePage />} />
+          <Route path='/channels/@me' element={<Mepage />} />
           <Route path='/channels/:id' element={<ChannelsTemplete />} />
         </Route>
       </Routes>

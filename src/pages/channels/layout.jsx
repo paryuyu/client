@@ -7,10 +7,11 @@ import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import AddIcon from '@mui/icons-material/Add';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import InsertCommentIcon from '@mui/icons-material/InsertComment';
 const iconStyle = {
     cursor: "pointer",
+    backgroundColor:'#3f4040'
 }
 
 
@@ -22,8 +23,12 @@ export default function Layout() {
 
     const navi = useNavigate();
 
-    return (<Box sx={{display:'flex'}}>
-        <List sx={{ width: '100%', maxWidth: 80, bgcolor: '#333', height: '100vh' }}>
+    return (
+    
+    
+  
+    <Box sx={{display:'flex'}}>
+        <List sx={{ width: '100%', maxWidth: 80, bgcolor: '#232424', height: '100.9vh' , display:'flex', flexDirection:'column', alignItems:'center' }}>
             <ListItem
                 onMouseOver={() => { setMeIcon(true) }}
                 onMouseLeave={() => {setMeIcon(false) }}
@@ -81,5 +86,12 @@ export default function Layout() {
         
 
 
-    </Box>);
+<Outlet/>
+    </Box>
+    
+    
+    
+    
+    
+    );
 }
