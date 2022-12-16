@@ -1,8 +1,8 @@
-let serverIp = 'http://192.168.4.25:8080'
+
 
 export async function RegisterAPI(userinfo){
 
-    let res = await fetch(serverIp+"/auth/register",{
+    let res = await fetch(process.env.REACT_APP_SERVER_IP+"/auth/register",{
         method:'post',
         body:JSON.stringify(userinfo),
         headers:{"content-type":"application/json"}
@@ -16,12 +16,24 @@ export async function RegisterAPI(userinfo){
 
 export async function LoginAPI(userinfo){
 
-    let res = await fetch(serverIp+"/auth/login",{
+    let res = await fetch(process.env.REACT_APP_SERVER_IP+"/auth/login",{
         method:'post',
         body:JSON.stringify(userinfo),
         headers:{"content-type":"application/json"}
     });
 
-    let json = await res.json();
-    return json;
+    return res;
+}
+
+
+
+export async function TokenValidAPI(jwt){
+
+    let res = await fetch(process.env.REACT_APP_SERVER_IP+"/auth/session",{
+        method:'post',
+        headers:{ "authorization": "Bearer " + jwt}
+    });
+
+
+    return res;
 }

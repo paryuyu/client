@@ -23,19 +23,32 @@ function LoginPage() {
         setPassword(evt.target.value)
     }
 
+
+    //컨텍스트에 만들어둔 로그인으로 변경
     const LoginClick = async ()=>{
+        
         if(userId.length>0 && password.length>0){
             let data={
                 userId: userId,
                 userPassword: password
             }
-            let response = await LoginAPI(data);
-           // console.log(response)
-            if(response.result){
-                accountCtx.setToken(response.token)
-                localStorage.setItem("jwt",response.token)
-                navi("/channels/@me")
+
+            let result = await accountCtx.Login(data);
+            if(result){
+                setTimeout(()=>{
+                    navi("/channels/@me")
+                },500)
             }
+
+
+        //     let response = await LoginAPI(data);
+        //    // console.log(response)
+        //     if(response.result){
+        //         accountCtx.setToken(response.token)
+        //         localStorage.setItem("jwt",response.token)
+        //         navi("/channels/@me")
+        //     }
+
         }
     }
 

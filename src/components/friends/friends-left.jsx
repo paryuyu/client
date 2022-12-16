@@ -3,13 +3,13 @@ import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import { FaUserFriends } from 'react-icons/fa';
 import AddIcon from '@mui/icons-material/Add';
-import { Box, Divider, Typography } from '@mui/material';
+import { Box, Divider, IconButton, Typography } from '@mui/material';
 
 
 
 function Friends() {
-    return (<> <List sx={{ width: '100%',  maxWidth: 350, bgcolor: '#535454', padding: 1.5 }}>
-        <ListItem sx={[{ bgcolor: '#333', cursor: 'pointer', borderRadius: 5 }, { "&:hover": { bgcolor: '#575958' } }]}>
+    return (<> <List sx={{ width: '100%',  maxWidth: 300, bgcolor: '#535454', padding: 1.5}}>
+        <ListItem sx={[{ bgcolor: '#333', cursor: 'pointer', borderRadius: 5 }, { "&:hover": { bgcolor: '#6b6a6a'  } }]}>
             <ListItemAvatar>
                 <FaUserFriends size={30} color={'white'} />
             </ListItemAvatar>
@@ -21,7 +21,9 @@ function Friends() {
         <ListItem sx={{ "display": 'flex', 'flexDirection': 'row', 'justifyContent': 'space-between' }}>
 
             <Typography sx={{ color: 'white', fontWeight: 500, fontSize: 13 ,width:200}}>다이렉트 메세지</Typography>
+            <IconButton>
             <AddIcon size={13} style={{ color: 'white', cursor: 'pointer' }} />
+            </IconButton>
         </ListItem>
     </List></>);
 }
