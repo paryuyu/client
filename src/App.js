@@ -16,7 +16,7 @@ function App() {
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />} />
         <Route element={<Layout />}>
-          <Route path='/channels/@me' element={<Mepage />} />
+          <Route path='/channels/@me/*' element={<Mepage />} />
           <Route path='/channels/:id' element={<ChannelsTemplete />} />
         </Route>
       </Routes>

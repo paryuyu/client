@@ -1,58 +1,26 @@
+import { Typography } from '@mui/material';
 import * as React from 'react';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
-import { FaDiscord } from 'react-icons/fa';
-import { IconButton } from '@mui/material';
-import ClearIcon from '@mui/icons-material/Clear';
-import CheckIcon from '@mui/icons-material/Check';
 
-function Pending({datas}) {
-    
-    console.log(datas,'datas')
-    //TODO: datas가 친구 리스트임 뿌려주자
+import FriendListItem from './friend-listitem';
 
-    
-    return ( <>
-      <List sx={{ width: '100%' }}>
-      <ListItem>
-        <ListItemAvatar>
-          <Avatar>
-            <FaDiscord />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="네임" secondary="받은친구요청" />
+function Pending({ datas }) {
+  //친구리스트
+  console.log('pending', datas)
 
-        <IconButton>
-            <ClearIcon sx={{color:'white'}}/>
-        </IconButton>
+  //TODO: datas가 친구 리스트임 뿌려주자
 
-        <IconButton>
-            <CheckIcon sx={{color:'white'}}/>
-        </IconButton>
+  React.useEffect(() => {
 
-      </ListItem>
-      <ListItem>
-        <ListItemAvatar>
-          <Avatar>
-            <FaDiscord />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="네임" secondary="보낸친구요청" />
-      </ListItem>
-      <ListItem>
-        <ListItemAvatar>
-          <Avatar>
-            <FaDiscord />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="네임" secondary="July 20, 2014" />
-      </ListItem>
-    </List>
-    
-    </> );
+  }, [])
+
+  return (<>
+
+      {datas.map((one, index) => {
+        return <FriendListItem item ={one} key={index} />
+      })
+}
+ 
+  </>);
 }
 
 export default Pending;

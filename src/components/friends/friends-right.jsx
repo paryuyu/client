@@ -7,6 +7,8 @@ import FriendsMain from '../rooms/friends-main';
 import Pending from '../rooms/pending';
 import { FriendsListFindAPI } from '../../util/relationship';
 import NoFriends from '../rooms/no-friend';
+import AddFriend from '../rooms/add-friend';
+import { RelactionContext } from '../../context/relation-context';
 
 export default function FriendsRight() {
   let [friendNavi, setFriendNavi] = React.useState();
@@ -16,12 +18,12 @@ export default function FriendsRight() {
     let json = await result.json()
     setFriendList(json)
   }
+
+ let ctx = React.useContext(RelactionContext)
   //받은 친구 요청 4
   //보낸 친구 요청 3
   React.useEffect(() => {
-
     friendsFind()
-
   }, [])
 
   const handleNavi = (val) => {
@@ -45,8 +47,6 @@ export default function FriendsRight() {
     }
   }
 
-  console.log(friendList)
-
 
 
   return (<Box sx={{ width: '100%', height: '100vh' }}>
@@ -54,10 +54,8 @@ export default function FriendsRight() {
     <Divider />
     {/** 여기서 컴포넌트 바꿔치워주기 */}
     {friendNavi === 'online' && <NoFriends />}
-
-    {friendNavi === 'pending' && 
-      <Pending datas={friendList}/>
-   }
+    {friendNavi === 'pending' && <Pending datas={friendList}/>}
+    {friendNavi === 'add' && <AddFriend />}
 
 
   </Box>);

@@ -5,31 +5,32 @@ import Friends from "../../components/friends/friends-left";
 import FriendsRight from "../../components/friends/friends-right";
 import { AccountContext } from "../../context/account-context";
 import { io } from 'socket.io-client';
+import { RealtionShipProvider } from "../../context/relation-context";
 
 export default function Mepage() {
-let ctx = React.useContext(AccountContext);
+    let ctx = React.useContext(AccountContext);
 
-    React.useEffect(()=>{
+    React.useEffect(() => {
 
         //웹소켓
         // console.log('소켓 연결시도')
         // console.log(ctx.data)
         // //최초 커넥션이 될 때 쿼리정보도 같이 서버로 넘어감.
-        if(ctx.data){
+        if (ctx.data) {
 
-        const socket = io(process.env.REACT_APP_SERVER_IP,{query:{userId:ctx.data.user.email}});
-            
-        socket.on('add-friend-request',(data)=>{
-            console.log('add-friend-request => ',data)
-        })
+            const socket = io(process.env.REACT_APP_SERVER_IP, { query: { userId: ctx.data.user.email } });
+
+            socket.on('add-friend-request', (data) => {
+                console.log('add-friend-request => ', data)
+            })
 
 
-        return ()=>{ socket.disconnect();}
+            return () => { socket.disconnect(); }
 
         }
 
 
-    
+
 
         // socket id같은 value 값은 on 이벤트 발생 함수 안에서만 돌아간다.
 
@@ -46,24 +47,24 @@ let ctx = React.useContext(AccountContext);
         // socket.on('newUser!',(data)=>{
         //     console.log('newUser!=>',data)
         // })
-        
+
         // socket.on('private',(data)=>{
         //     console.log('private => ',data)
         // })
-    },[])
+    }, [])
 
     return (<>
-        <Box sx={{ display:'flex' , height:'100%'}}>
-            <Friends />
-        <Box>
-            <FriendsRight/>
-        </Box>
+        <RealtionShipProvider>
+            <Box sx={{ display: 'flex', height: '100%' }}>
+                <Friends />
+                <Box>
+                    <FriendsRight />
+                </Box>
 
-        </Box>
+            </Box>
 
 
-
-        <></>
+        </RealtionShipProvider>
 
 
     </>)

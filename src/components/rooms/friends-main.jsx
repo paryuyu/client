@@ -8,11 +8,6 @@ import YesFriends from "./yes-friend";
 
 export default function FriendsMain() {
 
-    //여기서 친구목록을 가져올거임.
-
-
-    //online, all, pending, block, friendAdd
-        
     
 
     return ( <Box sx={{bgcolor:'#606363'}}>
